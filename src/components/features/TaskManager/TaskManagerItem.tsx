@@ -1,10 +1,12 @@
 import { useState, type ChangeEvent } from "react";
-import { capitalize } from "../../../utils/text";
 import Button from "../../ui/Button";
+import Badge from "../../ui/Badge/Badge";
 
 type TaskManagerItemProps = {
-  taskName: string;
+  name: string;
   status: "completed" | "pending";
+  priotity: "low" | "medium" | "high";
+  category: "work" | "personal" | "study" | "other";
 };
 
 const statusStyle = {
@@ -13,7 +15,7 @@ const statusStyle = {
 };
 
 export default function TaskManagerItem({
-  taskName,
+  name,
   status,
 }: TaskManagerItemProps) {
   const [isChecked, setIsChecked] = useState<boolean>(false);
@@ -37,18 +39,15 @@ export default function TaskManagerItem({
           name=""
           id=""
         />
-        <p className="text-lg w-[90%]">{taskName}</p>
+        <p className="text-lg w-[90%]">{name}</p>
       </header>
       <section className="w-[35%] flex justify-evenly items-center">
-        {/* Crear componente de Badge */}
-        <p
-          className={`rounded-xl px-5 py-1 font-semibold select-none transition-colors duration-500 ${statusStyle[statusTask]}`}
-        >
-          {capitalize(statusTask)}
-        </p>
-        {/* Crear badge de prioridad */}
-        {/* Crear badge de categoria */}
-        {/* Poner variables para colores de paleta en el css */}
+        <Badge
+          className={statusStyle[statusTask]}
+          value={statusTask}
+          type="status"
+        />
+
         <Button
           value="Edit"
           icon="edit"

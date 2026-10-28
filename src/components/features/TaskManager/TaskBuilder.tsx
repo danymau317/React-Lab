@@ -4,9 +4,9 @@ type TaskBuilderProps = {};
 
 type TaskType = {
   name: string;
-  priority: "Low" | "Medium" | "High";
-  DueDate: Date;
-  Category: "Work" | "Personal" | "Study";
+  priority: "low" | "medium" | "high";
+  dueDate: Date;
+  category: "work" | "personal" | "study" | "other";
 };
 
 const taskExamples = [
