@@ -8,8 +8,8 @@ type TaskManagerItemProps = {
 };
 
 const statusStyle = {
-  completed: "bg-[#b6f4da] text-[#174036]",
-  pending: "bg-[#fff3c9] text-[#bd921c]",
+  completed: "bg-badge-background-completed text-badge-text-completed",
+  pending: "bg-badge-background-pending text-badge-text-pending",
 };
 
 export default function TaskManagerItem({
@@ -30,7 +30,7 @@ export default function TaskManagerItem({
     <article className="flex justify-between items-center gap-5">
       <header className="flex items-center gap-8 w-[60%]">
         <input
-          className="accent-[#5B3FD1] w-10 h-5"
+          className="accent-brand-purple w-10 h-5"
           type="checkbox"
           checked={isChecked}
           onChange={handleisChecked}
@@ -52,13 +52,13 @@ export default function TaskManagerItem({
         <Button
           value="Edit"
           icon="edit"
-          className="border-2 border-[#5B3FD1] text-[#5B3FD1] bg-[#5c3fd115]"
+          className="border-2 border-brand-border text-text-purple-primary bg-brand-purple-opacity-80"
           onClick={() => {}}
         />
         <Button
           value="Delete"
           icon="delete"
-          className="bg-[#ec5548] text-white"
+          className="bg-button-delete text-text-secondary"
           onClick={() => {}}
         />
       </section>

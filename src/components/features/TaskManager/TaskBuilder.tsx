@@ -31,7 +31,7 @@ export default function TaskBuilder({}: TaskBuilderProps) {
           Task Name
         </label>
         <Input
-          className="border-[#5B3FD1] w-[15%] focus:outline-none"
+          className="border-brand-border w-[15%] focus:outline-none"
           type="text"
           value=""
           onClick={() => {}}

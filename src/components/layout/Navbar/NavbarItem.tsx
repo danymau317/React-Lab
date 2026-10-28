@@ -16,10 +16,10 @@ export default function NavbarItem({
         to={path}
         className={({ isActive }) =>
           `relative block w-40 text-center cursor-pointer p-1 rounded-lg
-          transition-all duration-500 ease-in-out after:content-[''] after:absolute after:transition-all after:duration-500 after:w-full after:inset-0 hover:text-[#5B3FD1] hover:font-bold
+          transition-all duration-500 ease-in-out after:content-[''] after:absolute after:transition-all after:duration-500 after:w-full after:inset-0 hover:text-text-purple-primary hover:font-bold
 
           ${className}
-          ${isActive ? "text-[#5B3FD1] font-bold after:content-[''] after:top-12 after:h-1 after:bg-[#5B3FD1] after:opacity-100" : "after:top-15 after:opacity-0"}`
+          ${isActive ? "text-text-purple-primary font-bold after:content-[''] after:top-12 after:h-1 after:bg-interactive-hover after:opacity-100" : "after:top-15 after:opacity-0"}`
         }
       >
         {nameSection}

@@ -1,13 +1,14 @@
 import type { InputProps } from "./Input";
 
-type ButtonProps = InputProps & {
+type ButtonProps = Omit<InputProps, "type"> & {
   icon?: string;
+  type?: Exclude<InputProps["type"], "text">;
 };
 
 export default function Button({
   value,
   icon,
-  className,
+  className = "",
   onClick,
   type = "button",
   isActive,

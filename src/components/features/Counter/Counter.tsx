@@ -23,26 +23,26 @@ export default function Counter({}: CounterProps) {
   const buttonsCounter: InputProps[] = [
     {
       value: "Incrementar",
-      className: "bg-[#5B3FD1] text-white",
+      className: "bg-brand-purple text-white",
       onClick: addCounter,
     },
     {
       value: "Decrementar",
-      className: "text-[#5B3FD1]",
+      className: "text-text-purple-primary",
       onClick: subsCounter,
     },
     {
       value: "Limite",
-      className: "text-[#5B3FD1]",
+      className: "text-text-purple-primary",
       onClick: enableLimit,
       isActive: isActiveLimit,
-      classNameIsActive: "bg-[#5B3FD1] text-white",
+      classNameIsActive: "bg-interactive-hover text-white",
     },
   ];
 
   return (
-    <section className="border-2 bg-[#f5f1e7] h-[60vh] flex justify-center items-center">
-      <section className="bg-white rounded-md w-[50vw] flex flex-col justify-center items-center py-10">
+    <section className="bg-brand-background h-[60vh] flex justify-center items-center">
+      <section className="bg-brand-background-alt rounded-md w-[50vw] flex flex-col justify-center items-center py-10">
         <h2 className="text-xl">Count</h2>
         <p className="text-3xl font-bold">{counter}</p>
         <div className="mt-5 space-x-10">

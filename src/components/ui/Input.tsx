@@ -1,7 +1,10 @@
+import type { ChangeEvent } from "react";
+
 export type InputProps = {
   value: string;
   className?: string;
-  onClick: () => void;
+  onClick?: () => void;
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
   type?: "button" | "submit" | "reset" | "text";
   isActive?: boolean;
   classNameIsActive?: string;
@@ -10,8 +13,9 @@ export type InputProps = {
 
 export default function Input({
   value,
-  className,
+  className = "",
   onClick,
+  onChange,
   type = "button",
   isActive,
   classNameIsActive,
@@ -23,6 +27,7 @@ export default function Input({
       type={type}
       value={value}
       onClick={onClick}
+      onChange={onChange}
       placeholder={placeholder}
     />
   );

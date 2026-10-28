@@ -3,11 +3,55 @@
 @import "tailwindcss";
 
 @theme {
+  /*! Fonts */
   --font-playfair: "Playfair Display", serif;
   --font-inter: "Inter", serif;
+
+  /*! Main Colors */
+  --color-brand-background: #f5f1e7;
+  --color-brand-background-alt: #f8fafc;
+  --color-brand-border: #5b3fd1;
+  --color-brand-purple: #5b3fd1;
+  --color-brand-purple-opacity-80: #5c3fd115;
+
+  /*! Titles */
+  --color-title-primary: #5c5197;
+  --color-title-secondary: #2a2a2e;
+
+  /*! Text */
+  --color-text-primary: #393c42;
+  --color-text-secondary: #fff;
+  --color-text-purple-primary: #5b3fd1;
+
+  /*! Hover */
+  --color-interactive-hover: #5b3fd1;
+
+  /*! Button / Input  */
+  --color-button: #5b3fd1;
+  --color-button-delete: #ec5548;
+
+  /*! Component: Badge */
+  --color-badge-background-completed: #b6f4da;
+  --color-badge-text-completed: #174036;
+
+  --color-badge-background-pending: #fff3c9;
+  --color-badge-text-pending: #bd921c;
 }
 
 body {
   font-family: var(--font-inter);
-  background: #f8fafc;
+  background: var(--color-brand-background-alt);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--color-title-secondary);
+}
+
+p {
+  color: var(--color-text-primary);
 }
