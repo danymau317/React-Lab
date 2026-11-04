@@ -1,12 +1,36 @@
 import { capitalize } from "../../../utils/text";
+import type {
+  TaskCategory,
+  TaskStatus,
+  TaskPriority,
+} from "../../features/TaskManager/types/task.types";
+import { badgeVariants } from "./Badge.variants";
 
-export type BadgeProps = {
-  value: string;
-  type: "status" | "priority" | "category" | "other";
+export type BaseBadgeProps = {
   icon?: string;
   className?: string;
   format?: boolean;
 };
+
+type StatusBadgeProps = BaseBadgeProps & {
+  type: "status";
+  value: TaskStatus;
+};
+
+type PriorityBadgeProps = BaseBadgeProps & {
+  type: "priority";
+  value: TaskPriority;
+};
+
+type CategoryBadgeProps = BaseBadgeProps & {
+  type: "category";
+  value: TaskCategory;
+};
+
+export type VariantBadgeProps =
+  | StatusBadgeProps
+  | PriorityBadgeProps
+  | CategoryBadgeProps;
 
 export default function Badge({
   value,
@@ -14,15 +38,28 @@ export default function Badge({
   icon,
   className = "",
   format = true,
-}: BadgeProps) {
+}: VariantBadgeProps) {
   const showIcon = type === "priority" || type === "category";
+  const badgeVariant = (() => {
+    switch (type) {
+      case "status":
+        return badgeVariants.status[value];
+
+      case "priority":
+        return badgeVariants.priority[value];
+
+      case "category":
+        return badgeVariants.category[value];
+    }
+  })();
+  const badgeIcon = icon ?? badgeVariant.icon;
 
   return (
     <span
-      className={`inline-flex items-center justify-center gap-1.5 rounded-xl px-3 py-1 font-semibold select-none transition-all duration-500 ${className}`}
+      className={`inline-flex items-center justify-center gap-1.5 rounded-xl px-3 py-1 font-semibold select-none transition-all duration-500 ${className || badgeVariant.className}`}
     >
-      {showIcon && icon && (
-        <span className="material-symbols-outlined text-sm">{icon}</span>
+      {showIcon && (icon || badgeVariant?.icon) && (
+        <span className="material-symbols-outlined text-sm">{badgeIcon}</span>
       )}
       <span>{format ? capitalize(value) : value}</span>
     </span>
