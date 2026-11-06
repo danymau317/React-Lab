@@ -1,4 +1,4 @@
-import TaskManagerItem from "./TaskManagerItem";
+import TaskManagerItem from "./TaskManagerItem/TaskManagerItem";
 
 type TaskManagerItemsProps = {};
 

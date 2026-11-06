@@ -2,13 +2,6 @@ import random from "../../../utils/random";
 import Input from "../../ui/Input";
 type TaskBuilderProps = {};
 
-type TaskType = {
-  name: string;
-  priority: "low" | "medium" | "high";
-  dueDate: Date;
-  category: "work" | "personal" | "study" | "other";
-};
-
 const taskExamples = [
   "Learn React",
   "Install Linux on RaspberryPi",
@@ -26,12 +19,13 @@ export default function TaskBuilder({}: TaskBuilderProps) {
 
   return (
     <section className="bg-white rounded-xl mb-5 p-5">
-      <header>
-        <label htmlFor="" className="mr-5">
+      <header className="flex flex-col justify-center items-center gap-2 lg:flex-row lg:justify-start ">
+        <label htmlFor="task-name-input" className="font-bold mr-5">
           Task Name
         </label>
         <Input
-          className="border-brand-border w-[15%] focus:outline-none"
+          id="task-name-input"
+          className="border-brand-border focus:outline-none placeholder:text-center lg:w-[15%] lg:placeholder:text-start"
           type="text"
           value=""
           onClick={() => {}}

@@ -1,0 +1,105 @@
+# React - State, Callbacks y desacoplamiento
+
+## 1. Pasar un callback (recomendado para acciones específicas)
+
+Cuando el hijo solamente necesita ejecutar una acción, se recomienda pasarle un callback que represente dicha acción.
+
+El padre es responsable de implementar la lógica y el hijo solamente ejecuta la función recibida.
+
+**Parent.tsx**
+
+```tsx
+import { useState } from "react";
+
+export default function Parent() {
+  const [state, setState] = useState<boolean>(false);
+
+  return (
+    <section>
+      <Child onToggle={() => setState(prev => !prev)} />
+
+      {state && <p>Estado activo</p>}
+    </section>
+  );
+}
+```
+
+**Child.tsx**
+
+```tsx
+type ChildProps = {
+  onToggle: () => void;
+};
+
+export default function Child({ onToggle }: ChildProps) {
+  return (
+    <button onClick={onToggle}>
+      Cambiar estado
+    </button>
+  );
+}
+```
+
+**Ventajas:**
+- El padre administra el estado.
+- El padre implementa la lógica.
+- El hijo desconoce cómo se modifica el estado.
+- El hijo solamente conoce la acción que puede ejecutar.
+
+## 2. Pasar directamente un setter
+
+Cuando el hijo necesita actualizar dinámicamente un estado utilizando su valor anterior o realizar diferentes actualizaciones, puede ser conveniente pasar directamente el setter.
+
+**Parent.tsx**
+
+```tsx
+import { useState } from "react";
+import type { Dispatch, SetStateAction } from "react";
+
+export default function Parent() {
+  const [state, setState] = useState<boolean>(false);
+
+  return (
+    <section>
+      <Child onToggle={setState} />
+
+      {state && <p>Estado activo</p>}
+    </section>
+  );
+}
+```
+
+**Child.tsx**
+
+```tsx
+import type { Dispatch, SetStateAction } from "react";
+
+type ChildProps = {
+  onToggle: Dispatch<SetStateAction<boolean>>;
+};
+
+export default function Child({ onToggle }: ChildProps) {
+  return (
+    <button onClick={() => onToggle(prev => !prev)}>
+      Cambiar estado
+    </button>
+  );
+}
+```
+
+**el type de Dispatch<SetStateAction<type>> solo se ocupa cuando un componente usa el valor anterior del state en el state 
+
+**Ventajas:**
+- El hijo puede calcular el siguiente estado.
+- Puede utilizar el valor anterior mediante una actualización funcional.
+- No necesita que el padre defina previamente cada operación.
+
+## 3. Regla para recordar
+
+Ejecutar una acción específica      =>    Callback (`onClose`, `onDelete`) 
+Actualizar dinámicamente el estado  =>    Setter (`setState`) 
+Mostrar información                 =>    Valor del estado (`state`) 
+
+**Importante:** pasar un setter directamente no es una mala práctica. Sin embargo, cuando el hijo solamente necesita ejecutar una acción concreta, suele ser preferible pasar un callback semántico.
+
+El objetivo es mantener los componentes desacoplados, con responsabilidades claras y sin dependencias innecesarias.

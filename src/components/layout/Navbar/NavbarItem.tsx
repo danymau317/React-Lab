@@ -1,12 +1,12 @@
 import { NavLink } from "react-router-dom";
-type NavbarItemProps = {
+export type NavbarItemProps = {
   className?: string;
   path: string;
   nameSection: string;
 };
 
 export default function NavbarItem({
-  className,
+  className = "",
   path,
   nameSection,
 }: NavbarItemProps) {

@@ -41,11 +41,11 @@ export default function Counter({}: CounterProps) {
   ];
 
   return (
-    <section className="bg-brand-background h-[60vh] flex justify-center items-center">
-      <section className="bg-brand-background-alt rounded-md w-[50vw] flex flex-col justify-center items-center py-10">
+    <section className="bg-brand-background h-[50dvh] flex justify-center items-center py-5 px-2 lg:h-[60dvh]">
+      <section className="bg-brand-background-alt rounded-md flex flex-col justify-center items-center w-screen gap-3 py-5 lg:py-10 lg:w-[50dvw]">
         <h2 className="text-xl">Count</h2>
         <p className="text-3xl font-bold">{counter}</p>
-        <div className="mt-5 space-x-10">
+        <div className="flex flex-col self-center gap-2 lg:block lg:mt-5 lg:space-x-10">
           {buttonsCounter.map((button) => (
             <Input key={button.value} {...button} />
           ))}

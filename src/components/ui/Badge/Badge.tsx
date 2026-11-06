@@ -39,7 +39,6 @@ export default function Badge({
   className = "",
   format = true,
 }: VariantBadgeProps) {
-  const showIcon = type === "priority" || type === "category";
   const badgeVariant = (() => {
     switch (type) {
       case "status":
@@ -56,9 +55,9 @@ export default function Badge({
 
   return (
     <span
-      className={`inline-flex items-center justify-center gap-1.5 rounded-xl px-3 py-1 font-semibold select-none transition-all duration-500 ${className || badgeVariant.className}`}
+      className={`flex items-center justify-center gap-1.5 rounded-xl px-3 py-1 font-semibold select-none transition-all duration-500 ${className || badgeVariant.className}`}
     >
-      {showIcon && (icon || badgeVariant?.icon) && (
+      {(icon || badgeVariant?.icon) && (
         <span className="material-symbols-outlined text-sm">{badgeIcon}</span>
       )}
       <span>{format ? capitalize(value) : value}</span>

@@ -1,15 +1,15 @@
 export const badgeVariants = {
   status: {
     completed: {
-      icon: "",
+      icon: "done_all",
       className: "bg-badge-background-completed text-badge-text-completed",
     },
     pending: {
-      icon: "",
+      icon: "pending_actions",
       className: "bg-badge-background-pending text-badge-text-pending",
     },
     overdue: {
-      icon: "",
+      icon: "up_coming",
       className: "",
     },
   },

@@ -1,48 +1,27 @@
+import type { Dispatch, SetStateAction } from "react";
 import NavbarItem from "./NavbarItem";
 import react from "../../../assets/icons/react.svg";
-type NavbarProps = {};
+import HamburguerMenu from "./HamburguerMenu/HamburguerMenu";
+import { navSections } from "./config/navSections";
 
-type NavSectionsType = {
-  nameSection: string;
-  path: string;
+type NavbarProps = {
+  isOpenHamburguer: boolean;
+  onToggle: Dispatch<SetStateAction<boolean>>;
 };
 
-const navSections: NavSectionsType[] = [
-  {
-    nameSection: "Counter",
-    path: "/counter",
-  },
-  {
-    nameSection: "Filter",
-    path: "/filter",
-  },
-  {
-    nameSection: "Shopping Cart",
-    path: "/shopping-cart",
-  },
-  {
-    nameSection: "TaskManager",
-    path: "/task-manager",
-  },
-  {
-    nameSection: "Dashboard",
-    path: "/dashboard",
-  },
-];
-
-export default function Navbar({}: NavbarProps) {
+export default function Navbar({ isOpenHamburguer, onToggle }: NavbarProps) {
   return (
-    <nav className="bg-white rounded-lg m-auto my-5 p-5">
-      <section className="flex gap-2">
+    <nav className="bg-white rounded-lg lg:m-auto lg:my-5 p-5">
+      <section className="flex justify-between items-center gap-2 lg:justify-start">
         <div className="flex items-center gap-5">
           <img
             className="animate-[spin_2.5s_linear_infinite]"
             src={react}
             alt="react-icon"
           />
-          <h1 className="font-bold text-xl mr-10">React Lab</h1>
+          <h1 className="font-bold text-xl text-center lg:mr-10">React Lab</h1>
         </div>
-        <ul className="flex justify-around gap-10 px-3">
+        <ul className="hidden lg:flex lg:justify-around lg:gap-10 lg:px-3">
           {navSections.map((section) => (
             <NavbarItem
               key={section.path}
@@ -51,6 +30,10 @@ export default function Navbar({}: NavbarProps) {
             />
           ))}
         </ul>
+        <HamburguerMenu
+          isOpenHamburguer={isOpenHamburguer}
+          onToggle={onToggle}
+        />
       </section>
     </nav>
   );
